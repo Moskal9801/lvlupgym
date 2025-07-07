@@ -1,0 +1,538 @@
+.about-page {
+  background-color: $gray;
+  .about-page__concept {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 110px;
+    background-color: $gray;
+    @include small-desktop {
+      padding-top: 80px;
+      padding-bottom: 70px;
+    }
+    @include small-laptop {
+      padding-top: 60px;
+      padding-bottom: 50px;
+    }
+    @include tablet {
+      padding-top: 50px;
+      padding-bottom: 30px;
+    }
+    .concept__body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      .body__arrows {
+        position: absolute;
+        right: 0;
+        z-index: 2;
+        width: 50px;
+        height: 595px;
+        @include small-desktop {
+          width: 45px;
+          height: 485px;
+        }
+        @include small-laptop {
+          width: 30px;
+          height: 365px;
+        }
+        @include tablet {
+          width: 30px;
+          height: 340px;
+        }
+      }
+
+      .body__title {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        @include tablet {
+          flex-direction: column;
+          justify-content: unset;
+        }
+        h4 { }
+        p {
+          text-align: right;
+          @include tablet {
+            margin-top: 25px;
+            margin-left: auto;
+            max-width: 320px;
+            width: 100%;
+            br {
+              display: none;
+            }
+          }
+        }
+      }
+      .body__items {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 20px;
+        @include small-desktop {
+          margin-top: 40px;
+          gap: 15px;
+        }
+        @include small-laptop {
+          margin-top: 30px;
+        }
+        @include tablet {
+          margin-top: 25px;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+        .items__item {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          height: 310px;
+          background-color: $background;
+          &:nth-child(4), &:nth-child(5) {
+            &:before {
+              content: '';
+              position: absolute;
+              top: 65px;
+              right: 75px;
+              width: 30px;
+              height: 25px;
+              background-color: $blue;
+              @include small-desktop {
+                top: 55px;
+                right: 70px;
+                width: 25px;
+                height: 20px;
+              }
+              @include small-laptop {
+                top: 40px;
+                right: 55px;
+                width: 20px;
+                height: 15px;
+              }
+              @include tablet {
+                display: none;
+              }
+            }
+          }
+          @include small-desktop {
+            height: 255px;
+          }
+          @include small-laptop {
+            height: 190px;
+          }
+          @include tablet {
+            height: 120px;
+            &:nth-child(3) {
+              &:before {
+                content: '';
+                position: absolute;
+                top: 50px;
+                right: 50px;
+                width: 17px;
+                height: 15px;
+                background-color: $blue;
+              }
+            }
+            &:nth-child(6) {
+              &:before {
+                content: '';
+                position: absolute;
+                top: 10px;
+                right: 12px;
+                width: 17px;
+                height: 15px;
+                background-color: $blue;
+              }
+            }
+          }
+          p {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            font-size: 22px;
+            line-height: 25px;
+            @include small-desktop {
+              bottom: 25px;
+              left: 25px;
+              right: 25px;
+              font-size: 18px;
+              line-height: 21px;
+            }
+            @include small-laptop {
+              bottom: 15px;
+              left: 15px;
+              right: 15px;
+              font-size: 16px;
+              line-height: 18px;
+            }
+            @include tablet {
+              bottom: 10px;
+              left: 10px;
+              right: 10px;
+              font-size: 10px;
+              line-height: 11px;
+            }
+          }
+          picture {
+            display: block;
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            img {
+              display: block;
+              width: inherit;
+              height: inherit;
+              object-fit: cover;
+              &.glitch-for-image {
+                top:0;
+                left: 6px;
+                position: absolute;
+                clip: rect(0, 0, 0, 0);
+                &.animate {
+                  animation: glitch 3s infinite linear alternate-reverse;
+                }
+                @keyframes glitch {
+                  0% {clip: rect(252px, 400px, 58px, 0);}
+                  4% {clip: rect(345px, 400px, 164px, 0);}
+                  8% {clip: rect(22px, 400px, 315px, 0);}
+                  12% {clip: rect(266px, 400px, 181px, 0);}
+                  16% {clip: rect(228px, 400px, 149px, 0);}
+                  20% {clip: rect(37px, 400px, 34px, 0);}
+                  24% {clip: rect(363px, 400px, 260px, 0);}
+                  28% {clip: rect(2px, 400px, 261px, 0);}
+                  32% {clip: rect(192px, 400px, 1px, 0);}
+                  36% {clip: rect(186px, 400px, 56px, 0);}
+                  40% {clip: rect(272px, 400px, 230px, 0);}
+                  44% {clip: rect(299px, 400px, 2px, 0);}
+                  48% {clip: rect(270px, 400px, 68px, 0);}
+                  52% {clip: rect(66px, 400px, 221px, 0);}
+                  56% {clip: rect(92px, 400px, 261px, 0);}
+                  60% {clip: rect(189px, 400px, 9px, 0);}
+                  64% {clip: rect(297px, 400px, 147px, 0);}
+                  68% {clip: rect(67px, 400px, 116px, 0);}
+                  72% {clip: rect(356px, 400px, 296px, 0);}
+                  76% {clip: rect(77px, 400px, 288px, 0);}
+                  80% {clip: rect(340px, 400px, 225px, 0);}
+                  84% {clip: rect(364px, 400px, 160px, 0);}
+                  88% {clip: rect(60px, 400px, 260px, 0);}
+                  92% {clip: rect(103px, 400px, 342px, 0);}
+                  96% {clip: rect(128px, 400px, 136px, 0);}
+                  100% {clip: rect(226px, 400px, 270px, 0);}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .about-page__background {
+    position: relative;
+    z-index: 2;
+    -webkit-transform: translate3d(0,0,0);
+    padding-top: 45px;
+    background-color: $gray;
+    overflow: hidden;
+    @include small-desktop {
+      padding-top: 30px;
+    }
+    .background__desktop {
+      position: relative;
+      height: 470px;
+      @include small-desktop {
+        height: 385px;
+      }
+      @include small-laptop {
+        height: 315px;
+      }
+      @include tablet {
+        height: 285px;
+      }
+      svg {
+        position: absolute;
+        left: -100px;
+        right: -100px;
+        height: auto;
+        @include tablet {
+          height: 100%;
+        }
+        .top-line {
+          animation: moveRight 4s infinite linear;
+        }
+        .middle-line {
+          animation: moveLeft 4s infinite linear;
+        }
+        .bottom-line {
+          animation: moveRight 4s infinite linear;
+        }
+
+        @keyframes moveRight {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(92px); }
+        }
+
+        @keyframes moveLeft {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(-92px); }
+        }
+      }
+    }
+  }
+  .about-page__coaches {
+    position: relative;
+    overflow-x: hidden;
+    padding-top: 75px;
+    padding-bottom: 160px;
+    background-color: $blue;
+    @include small-desktop {
+      padding-top: 60px;
+      padding-bottom: 130px;
+    }
+    @include small-laptop {
+      padding-top: 50px;
+      padding-bottom: 100px;
+    }
+    @include tablet {
+      padding-top: 30px;
+      padding-bottom: 50px;
+    }
+    .coaches__background {
+      position: absolute;
+      right: 0;
+      bottom: -110px;
+      width: 50px;
+      height: 385px;
+      @include small-desktop {
+        bottom: -85px;
+        width: 45px;
+        height: 325px;
+      }
+      @include small-laptop {
+        bottom: -60px;
+        width: 30px;
+        height: 245px;
+      }
+      @include tablet {
+        display: none;
+      }
+    }
+    .coaches__body {
+      display: flex;
+      flex-direction: column;
+      .body__title {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        @include tablet {
+          flex-direction: column;
+          justify-content: unset;
+        }
+        h4 {
+          color: $white;
+        }
+        p {
+          text-align: right;
+          color: $white;
+          @include tablet {
+            margin-top: 25px;
+            margin-left: auto;
+            max-width: 320px;
+            width: 100%;
+            br {
+              display: none;
+            }
+          }
+        }
+      }
+      .body__items {
+        position: relative;
+        .swiper-coaches-manage {
+          @include tablet {
+            display: none;
+          }
+          .swiper-navigation {
+            svg {
+              position: absolute;
+              top: 355px;
+              width: 17px;
+              height: 52px;
+              cursor: pointer;
+              opacity: 1;
+              transition: opacity $transition;
+              @include hover {
+                opacity: 0.5;
+              }
+              @include small-desktop {
+                top: 290px;
+                width: 15px;
+                height: 46px;
+              }
+              @include small-laptop {
+                top: 205px;
+                width: 11px;
+                height: 35px;
+              }
+              &.swiper-prev {
+                left: 50px;
+              }
+              &.swiper-next {
+                right: 50px;
+              }
+            }
+          }
+        }
+        .swiper {
+          position: relative;
+          margin-top: 105px;
+          width: calc(100% - 220px) !important;
+          @include small-desktop {
+            margin-top: 80px;
+            width: calc(100% - 200px) !important;
+          }
+          @include small-laptop {
+            margin-top: 50px;
+            width: calc(100% - 85px) !important;
+          }
+          @include tablet {
+            margin-top: 40px;
+            width: 100% !important;
+            overflow: unset;
+          }
+          .swiper-category {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+            overflow-x: auto;
+            @include small-desktop {
+              margin-bottom: 15px;
+              padding-bottom: 10px;
+            }
+            @include small-laptop {
+              margin-bottom: 10px;
+              padding-bottom: 10px;
+              gap: 15px;
+            }
+            @include tablet {
+              margin-left: -15px;
+              margin-right: -15px;
+              padding-left: 15px;
+              padding-right: 15px;
+            }
+            .category__item {
+              white-space: nowrap;
+              color: $white;
+              text-decoration: underline;
+              text-underline-offset: 5px;
+              text-decoration-color: rgba(0,0,0,0);
+              opacity: 0.5;
+              transition: opacity $transition, text-decoration-color $transition;
+              @include small-desktop {
+                font-size: 18px;
+                line-height: 20px;
+              }
+              @include small-laptop {
+                font-size: 14px;
+                line-height: 16px;
+              }
+              @include tablet {
+                font-size: 14px;
+                line-height: 16px;
+              }
+              @include hover {
+                text-decoration-color: $white;
+                opacity: 1;
+              }
+              &.active {
+                text-decoration-color: $white;
+                opacity: 1;
+              }
+            }
+          }
+          .swiper-wrapper {
+            width: 100% !important;
+            .swiper-slide {
+              width: 100%;
+              cursor: pointer;
+              @include hover {
+                .slide-image {
+                  img {
+                    &.black-photo {
+                      opacity: 0;
+                    }
+                  }
+                }
+              }
+              @include tablet {
+                width: 200px !important;
+              }
+              .slide-image {
+                position: relative;
+                width: 100%;
+                height: 555px;
+                @include small-desktop {
+                  height: 460px;
+                }
+                @include small-laptop {
+                  height: 345px;
+                }
+                @include tablet {
+                  height: 225px;
+                }
+                img {
+                  &.black-photo {
+                    position: absolute;
+                    z-index: 2;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    opacity: 1;
+                    transition: opacity $transition;
+                    @include tablet {
+                      opacity: 0;
+                    }
+                  }
+                }
+              }
+              .slide-title {
+                margin-top: 30px;
+                font-family: $lato;
+                font-size: 31px;
+                font-weight: 300;
+                line-height: 37px;
+                color: $white;
+                @include small-desktop {
+                  margin-top: 25px;
+                  font-size: 26px;
+                  line-height: 31px;
+                }
+                @include small-laptop {
+                  margin-top: 20px;
+                  font-size: 20px;
+                  line-height: 24px;
+                }
+                @include tablet {
+                  margin-top: 15px;
+                  font-size: 14px;
+                  line-height: 16px;
+                }
+              }
+              .slide-post {
+                margin-top: 10px;
+                color: $white;
+                @include tablet {
+                  margin-top: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

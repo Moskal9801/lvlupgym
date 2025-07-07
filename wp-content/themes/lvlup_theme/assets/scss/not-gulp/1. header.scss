@@ -1,0 +1,899 @@
+@import "../default/3. variables";
+@import "../default/4. mixins";
+
+.main-header {
+  padding: 35px 0;
+  position: absolute;
+  z-index: 100;
+  -webkit-transform: translate3d(0,0,0);
+  top: 0;
+  left: 0;
+  right: 0;
+  @include small-desktop {
+    padding: 20px 0;
+  }
+  @include small-laptop {
+    padding: 15px 0;
+  }
+  &.blue-header {
+    .main-header__body {
+      .body__logo {
+        svg {
+          path {
+            fill: $blue;
+          }
+        }
+      }
+      .body__items {
+        .items__item {
+          color: $blue;
+          &::after {
+            background: $blue;
+          }
+        }
+      }
+      .body__hamburger {
+        .line {
+          background: $blue;
+        }
+      }
+    }
+  }
+  .main-header__body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .body__logo {
+      width: 75px;
+      height: 68px;
+      opacity: 1;
+      transition: opacity $transition;
+      @include hover {
+        opacity: 0.5;
+      }
+      @include small-desktop {
+        width: 72px;
+        height: 65px;
+      }
+      @include small-laptop {
+        width: 52px;
+        height: 47px;
+      }
+      @include tablet {
+        width: 65px;
+        height: 60px;
+      }
+      svg { }
+    }
+    .body__items {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 215px;
+      @include small-desktop {
+        gap: 185px;
+      }
+      @include small-laptop {
+        gap: 140px;
+      }
+      @include tablet {
+        display: none;
+      }
+      .items__item {
+        position: relative;
+        font-size: 18px;
+        line-height: 21px;
+        color: $white;
+        &.active {
+          &::after {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+        @include hover {
+          &::after {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+        &::after {
+          position: absolute;
+          content: "";
+          top: 135%;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: $white;
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform .4s ease-in-out;
+        }
+        @include small-laptop {
+          font-size: 16px;
+          line-height: 18px;
+        }
+      }
+    }
+    .body__hamburger {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 50px;
+      height: 35px;
+      gap: 13px;
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity $transition;
+      @include hover {
+        opacity: 0.5;
+      }
+      @include small-desktop {
+        width: 47px;
+        height: 32px;
+        gap: 11px;
+      }
+      @include small-laptop {
+        width: 38px;
+        height: 26px;
+        gap: 8px;
+      }
+      @include tablet {
+        width: 37px;
+        height: 25px;
+        gap: 9px;
+      }
+      .line {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: $white;
+        transition: all 0.4s;
+        &.line-1 {
+          top: 0;
+        }
+        &.line-2 {
+          top: 50%;
+        }
+        &.line-3 {
+          width: 100%;
+          top: 100%;
+        }
+      }
+      &.active {
+        .line-1 {
+          transform: translateY(16px) translateX(0) rotate(45deg);
+          width: 100%;
+          @include small-desktop {
+            transform: translateY(14px) translateX(0) rotate(45deg);
+          }
+          @include small-laptop {
+            transform: translateY(11px) translateX(0) rotate(45deg);
+          }
+          @include tablet {
+            transform: translateY(12px) translateX(0) rotate(45deg);
+          }
+        }
+        .line-2 {
+          opacity: 0;
+          width:   100%;
+        }
+        .line-3 {
+          transform: translateY(-16px) translateX(0) rotate(calc(45deg * -1));
+          width: 100%;
+          @include small-desktop {
+            transform: translateY(-14px) translateX(0) rotate(calc(45deg * -1));
+          }
+          @include small-laptop {
+            transform: translateY(-11px) translateX(0) rotate(calc(45deg * -1));
+          }
+          @include tablet {
+            transform: translateY(-10px) translateX(0) rotate(calc(45deg * -1));
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-menu {
+  background-color: $blue;
+  position: fixed;
+  z-index: 101;
+  top: 100vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  transition: top $transitionSlow;
+
+  background-image: url("/wp-content/themes/lvlup_theme/assets/media-file/background-menu-desktop.jpeg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: cover;
+
+  @include tablet {
+    height: 100dvh;
+    overflow-y: auto;
+  }
+
+  &.open-menu {
+    top: 0;
+  }
+
+  .main-menu__lines {
+    position: relative;
+    height: 170px;
+    @include small-desktop {
+      height: 140px;
+    }
+    @include small-laptop {
+      height: 105px;
+    }
+    @include tablet {
+      height: 75px;
+    }
+    .lines-line {
+      position: absolute;
+      background-color: $white;
+      transition: right 10s linear;
+      &.line-1 {
+        top: 0;
+        height: 20px;
+        width: 230px;
+        @include small-desktop {
+          top: 0;
+          height: 16px;
+          width: 190px;
+        }
+        @include small-laptop {
+          top: 0;
+          height: 12px;
+          width: 140px;
+        }
+        @include tablet {
+          top: 0;
+          height: 10px;
+          width: 77px;
+        }
+      }
+      &.line-2 {
+        top: 66px;
+        height: 20px;
+        width: 200px;
+        @include small-desktop {
+          top: 58px;
+          height: 16px;
+          width: 165px;
+        }
+        @include small-laptop {
+          top: 42px;
+          height: 12px;
+          width: 125px;
+        }
+        @include tablet {
+          top: 23px;
+          height: 10px;
+          width: 50px;
+        }
+      }
+      &.line-3 {
+        top: 86px;
+        right: 0;
+        height: 8px;
+        width: 1600px;
+        @include small-desktop {
+          top: 74px;
+          height: 6px;
+          width: 1330px;
+        }
+        @include small-laptop {
+          top: 54px;
+          height: 5px;
+          width: 1000px;
+        }
+        @include tablet {
+          top: 33px;
+          height: 4px;
+          width: 340px;
+        }
+      }
+      &.line-4 {
+        top: 94px;
+        height: 20px;
+        width: 210px;
+        @include small-desktop {
+          top: 80px;
+          height: 16px;
+          width: 175px;
+        }
+        @include small-laptop {
+          top: 59px;
+          height: 12px;
+          width: 130px;
+        }
+        @include tablet {
+          top: 37px;
+          height: 10px;
+          width: 50px;
+        }
+      }
+      &.line-5 {
+        top: 114px;
+        right: 0;
+        height: 8px;
+        width: 1185px;
+        @include small-desktop {
+          top: 96px;
+          height: 6px;
+          width: 990px;
+        }
+        @include small-laptop {
+          top: 71px;
+          height: 5px;
+          width: 740px;
+        }
+        @include tablet {
+          top: 47px;
+          height: 4px;
+          width: 230px;
+        }
+      }
+      &.line-6 {
+        top: 122px;
+        height: 20px;
+        width: 175px;
+        @include small-desktop {
+          top: 102px;
+          height: 16px;
+          width: 145px;
+        }
+        @include small-laptop {
+          top: 76px;
+          height: 12px;
+          width: 110px;
+        }
+        @include tablet {
+          top: 51px;
+          height: 10px;
+          width: 50px;
+        }
+      }
+      &.line-7 {
+        top: 142px;
+        right: 0;
+        height: 8px;
+        width: 925px;
+        @include small-desktop {
+          top: 118px;
+          height: 6px;
+          width: 770px;
+        }
+        @include small-laptop {
+          top: 88px;
+          height: 5px;
+          width: 580px;
+        }
+        @include tablet {
+          top: 61px;
+          height: 4px;
+          width: 180px;
+        }
+      }
+      &.line-8 {
+        top: 150px;
+        height: 20px;
+        width: 150px;
+        @include small-desktop {
+          top: 124px;
+          height: 16px;
+          width: 130px;
+        }
+        @include small-laptop {
+          top: 93px;
+          height: 12px;
+          width: 95px;
+        }
+        @include tablet {
+          top: 65px;
+          height: 10px;
+          width: 50px;
+        }
+      }
+    }
+  }
+
+  .main-menu__body {
+    display: grid;
+    grid-template-columns: auto 720px;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 'first fourth' 'first second' 'first second' 'first second' 'first third' 'first third';
+    width: 100%;
+    height: calc(100% - 170px);
+    border-bottom: 8px solid $white;
+    @include small-desktop {
+      grid-template-columns: auto 600px;
+      height: calc(100% - 140px);
+      border-bottom: 6px solid $white;
+    }
+    @include small-laptop {
+      grid-template-columns: auto 450px;
+      height: calc(100% - 105px);
+      border-bottom: 5px solid $white;
+    }
+    @include tablet {
+      grid-template-columns: auto 60px;
+      grid-template-rows: unset;
+      grid-template-areas: 'first fourth' 'second fourth' 'third third';
+      height: unset;
+      border-bottom: 4px solid $white;
+    }
+    .body__menu-items {
+      grid-area: first;
+      height: 100%;
+      .menu-items__item {
+        padding-left: 150px;
+        padding-right: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: calc(100% / 6);
+        background-color: rgba(0,0,0,0);
+        border-bottom: 2px solid $white;
+        border-right: 2px solid $white;
+        transition: background-color $transition;
+        &:last-child {
+          border-bottom: unset;
+        }
+        @include small-desktop {
+          padding-left: 125px;
+          padding-right: 40px;
+        }
+        @include small-laptop {
+          padding-left: 90px;
+          padding-right: 20px;
+        }
+        @include tablet {
+          padding: 30px 20px 30px 15px;
+          height: unset;
+          &:last-child {
+            border-bottom: 2px solid $white !important;
+          }
+        }
+        @include hover {
+          background-color: $white;
+          p {
+            color: $black;
+          }
+          svg {
+            path {
+              fill: $black;
+            }
+          }
+        }
+        &.logo {
+          display: none;
+          @include tablet {
+            display: flex;
+          }
+          svg {
+            width: 52px;
+            height: 47px;
+          }
+        }
+        p {
+          font-family: $lato;
+          font-size: 58px;
+          font-weight: 300;
+          line-height: 69px;
+          color: $white;
+          transition: color $transition;
+          @include small-desktop {
+            font-size: 48px;
+            line-height: 57px;
+          }
+          @include small-laptop {
+            font-size: 36px;
+            line-height: 43px;
+          }
+          @include tablet {
+            font-size: 32px;
+            line-height: 38px;
+          }
+        }
+        svg {
+          width: 18px;
+          height: 52px;
+          @include small-desktop {
+            width: 15px;
+            height: 46px;
+          }
+          @include small-laptop {
+            width: 11px;
+            height: 35px;
+          }
+          @include tablet {
+            width: 11px;
+            height: 30px;
+          }
+          path {
+            fill: $white;
+            transition: fill $transition;
+          }
+        }
+      }
+    }
+    .body__more-items {
+      grid-area: second;
+      padding: 65px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      height: 100%;
+      border-bottom: 2px solid $white;
+      @include small-desktop {
+        padding: 60px;
+      }
+      @include small-laptop {
+        padding: 60px 40px;
+      }
+      @include tablet {
+        padding: 15px 25px;
+        height: unset;
+        border-right: 2px solid $white;
+      }
+      .more-items__item {
+        font-family: $roboto;
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 37px;
+        color: $white;
+        opacity: 1;
+        transition: opacity $transition;
+        @include hover {
+          opacity: 0.5;
+        }
+        @include small-desktop {
+          font-size: 26px;
+          line-height: 30px;
+        }
+        @include small-laptop {
+          font-size: 20px;
+          line-height: 23px;
+        }
+        @include tablet {
+          margin-top: 20px;
+          font-size: 18px;
+          line-height: 21px;
+          &:first-child {
+            margin-top: unset !important;
+          }
+        }
+      }
+    }
+    .body__link-items {
+      grid-area: third;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-content: center;
+      grid-template-areas: 'first-link first-link' 'second-link third-link';
+      gap: 40px 30px;
+      height: 100%;
+      @include small-desktop {
+        gap: 30px 25px;
+      }
+      @include small-laptop {
+        gap: 30px 15px;
+      }
+      @include tablet {
+        padding: 35px 15px;
+        grid-template-areas: 'second-link third-link' 'first-link first-link';
+        gap: 15px;
+      }
+      .link-items__item {
+        width: 100%;
+        &.buy-card {
+          grid-area: first-link;
+          height: 75px;
+          @include small-desktop {
+            height: 55px;
+          }
+          @include small-laptop {
+            height: 40px;
+          }
+          @include tablet {
+            height: 60px;
+          }
+        }
+        &.app-store {
+          grid-area: second-link;
+          height: 85px;
+          @include small-desktop {
+            height: 70px;
+          }
+          @include small-laptop {
+            height: 55px;
+          }
+          @include tablet {
+            height: 50px;
+          }
+          svg {
+            opacity: 1;
+            transition: opacity $transition;
+          }
+          @include hover {
+            svg {
+              opacity: 0.5;
+            }
+          }
+        }
+        &.google-play {
+          grid-area: third-link;
+          height: 85px;
+          @include small-desktop {
+            height: 70px;
+          }
+          @include small-laptop {
+            height: 55px;
+          }
+          @include tablet {
+            height: 50px;
+          }
+          svg {
+            opacity: 1;
+            transition: opacity $transition;
+          }
+          @include hover {
+            svg {
+              opacity: 0.5;
+            }
+          }
+        }
+      }
+    }
+    .body__hamburger {
+      grid-area: fourth;
+      padding-left: 80px;
+      padding-right: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      border-bottom: 2px solid $white;
+      @include small-desktop {
+        padding-left: 60px;
+        padding-right: 40px;
+      }
+      @include small-laptop {
+        padding-left: 40px;
+        padding-right: 30px;
+      }
+      @include tablet {
+        padding-top: 20px;
+        padding-left: unset;
+        padding-right: unset;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .hamburger__logo {
+        width: 75px;
+        height: 68px;
+        opacity: 1;
+        transition: opacity $transition;
+        @include hover {
+          opacity: 0.5;
+        }
+        @include small-desktop {
+          width: 72px;
+          height: 65px;
+        }
+        @include small-laptop {
+          width: 52px;
+          height: 47px;
+        }
+        @include tablet {
+          display: none;
+        }
+        svg { }
+      }
+      .hamburger__hamburger {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 50px;
+        height: 35px;
+        gap: 13px;
+        cursor: pointer;
+        opacity: 1;
+        transition: opacity $transition;
+        @include hover {
+          opacity: 0.5;
+        }
+        @include small-desktop {
+          width: 47px;
+          height: 32px;
+          gap: 11px;
+        }
+        @include small-laptop {
+          width: 38px;
+          height: 26px;
+          gap: 8px;
+        }
+        @include tablet {
+          width: 37px;
+          height: 25px;
+          gap: 9px;
+        }
+        .line {
+          display: block;
+          width: 100%;
+          height: 3px;
+          background: $white;
+          transition: all 0.4s;
+          &.line-1 {
+            top: 0;
+          }
+          &.line-2 {
+            top: 50%;
+          }
+          &.line-3 {
+            width: 100%;
+            top: 100%;
+          }
+        }
+        &.active {
+          .line-1 {
+            transform: translateY(16px) translateX(0) rotate(45deg);
+            width: 100%;
+            @include small-desktop {
+              transform: translateY(14px) translateX(0) rotate(45deg);
+            }
+            @include small-laptop {
+              transform: translateY(11px) translateX(0) rotate(45deg);
+            }
+            @include tablet {
+              transform: translateY(12px) translateX(0) rotate(45deg);
+            }
+          }
+          .line-2 {
+            opacity: 0;
+            width:   100%;
+          }
+          .line-3 {
+            transform: translateY(-16px) translateX(0) rotate(calc(45deg * -1));
+            width: 100%;
+            @include small-desktop {
+              transform: translateY(-14px) translateX(0) rotate(calc(45deg * -1));
+            }
+            @include small-laptop {
+              transform: translateY(-11px) translateX(0) rotate(calc(45deg * -1));
+            }
+            @include tablet {
+              transform: translateY(-10px) translateX(0) rotate(calc(45deg * -1));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-hamburger {
+  position: fixed;
+  z-index: 99;
+  top: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 71px;
+  height: 66px;
+  background-color: rgba(256, 256, 256, 0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $transition;
+  &.opacity {
+    opacity: 1;
+    pointer-events: unset;
+  }
+  @include small-desktop {
+    top: 30px;
+    right: 30px;
+  }
+  @include small-laptop {
+    top: 15px;
+    right: 15px;
+    width: 54px;
+    height: 42px;
+  }
+  @include tablet {
+    width: 50px;
+    height: 37px;
+  }
+  .hamburger-hamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50px;
+    height: 35px;
+    gap: 13px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity $transition;
+    @include hover {
+      opacity: 0.5;
+    }
+    @include small-desktop {
+      width: 47px;
+      height: 32px;
+      gap: 11px;
+    }
+    @include small-laptop {
+      width: 38px;
+      height: 26px;
+      gap: 8px;
+    }
+    @include tablet {
+      width: 37px;
+      height: 25px;
+      gap: 9px;
+    }
+    .line {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: $blue;
+      transition: all 0.4s;
+      &.line-1 {
+        top: 0;
+      }
+      &.line-2 {
+        top: 50%;
+      }
+      &.line-3 {
+        width: 100%;
+        top: 100%;
+      }
+    }
+    &.active {
+      .line-1 {
+        transform: translateY(16px) translateX(0) rotate(45deg);
+        width: 100%;
+        @include small-desktop {
+          transform: translateY(14px) translateX(0) rotate(45deg);
+        }
+        @include small-laptop {
+          transform: translateY(11px) translateX(0) rotate(45deg);
+        }
+        @include tablet {
+          transform: translateY(12px) translateX(0) rotate(45deg);
+        }
+      }
+      .line-2 {
+        opacity: 0;
+        width:   100%;
+      }
+      .line-3 {
+        transform: translateY(-16px) translateX(0) rotate(calc(45deg * -1));
+        width: 100%;
+        @include small-desktop {
+          transform: translateY(-14px) translateX(0) rotate(calc(45deg * -1));
+        }
+        @include small-laptop {
+          transform: translateY(-11px) translateX(0) rotate(calc(45deg * -1));
+        }
+        @include tablet {
+          transform: translateY(-10px) translateX(0) rotate(calc(45deg * -1));
+        }
+      }
+    }
+  }
+}

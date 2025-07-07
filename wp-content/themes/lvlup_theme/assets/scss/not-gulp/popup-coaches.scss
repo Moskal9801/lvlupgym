@@ -1,0 +1,290 @@
+@import "../default/3. variables";
+@import "../default/4. mixins";
+
+.popup-coaches {
+  position: fixed;
+  z-index: 222;
+  top: 0;
+  bottom: 0;
+  right: -900px;
+  height: 100%;
+  width: 900px;
+  background-color: $background;
+  overflow-y: auto;
+  transition: right $transition;
+  @include small-desktop {
+    right: -750px;
+    width: 750px;
+  }
+  @include small-laptop {
+    right: -565px;
+    width: 565px;
+  }
+  @include tablet {
+    right: -100vw;
+    width: 100vw;
+  }
+  &.active {
+    right: 0;
+    .coaches-close {
+      right: 950px;
+      @include small-desktop {
+        right: 790px;
+      }
+      @include small-laptop {
+        right: 595px;
+      }
+      @include tablet {
+        right: unset;
+        left: 15px;
+      }
+    }
+  }
+
+  .coaches-background-desktop {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: 50px;
+    height: 145px;
+    @include small-desktop {
+      left: 30px;
+      width: 40px;
+      height: 120px;
+    }
+    @include small-laptop {
+      left: 25px;
+      width: 30px;
+      height: 90px;
+    }
+    @include tablet {
+      display: none;
+    }
+  }
+  .coaches-background-mobile {
+    display: none;
+    @include tablet {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 30px;
+      width: 30px;
+      height: 140px;
+    }
+  }
+
+  .coaches-close {
+    position: fixed;
+    top: 50px;
+    right: -80px;
+    transition: right $transition, left $transition;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    @include hover {
+      svg {
+        circle {
+          fill: $blue;
+        }
+        path {
+          fill: $white;
+        }
+      }
+    }
+    @include small-desktop {
+      top: 40px;
+      right: -60px;
+      width: 60px;
+      height: 60px;
+    }
+    @include small-laptop {
+      top: 30px;
+      right: -45px;
+      width: 45px;
+      height: 45px;
+    }
+    @include tablet {
+      position: absolute;
+      top: 20px;
+      right: unset;
+      left: 100vw;
+      width: 32px;
+      height: 32px;
+    }
+    svg {
+      circle {
+        fill: $background;
+        transition: fill $transition;
+      }
+      path {
+        fill: $black;
+        transition: fill $transition;
+      }
+    }
+  }
+  .coaches-image {
+    width: 100%;
+    height: 450px;
+    @include small-desktop {
+      height: 375px;
+    }
+    @include small-laptop {
+      height: 275px;
+    }
+    @include tablet {
+      height: 450px;
+    }
+    img { }
+  }
+  .coaches-info {
+    padding: 35px 50px;
+    @include small-desktop {
+      padding: 30px;
+    }
+    @include small-laptop {
+      padding: 20px 25px;
+    }
+    @include tablet {
+      padding: 20px 15px;
+    }
+    .info-title {
+      font-family: $lato;
+      font-size: 40px;
+      font-weight: 300;
+      line-height: 48px;
+      color: $blue;
+      @include small-desktop {
+        font-size: 35px;
+        line-height: 42px;
+      }
+      @include small-laptop {
+        font-size: 26px;
+        line-height: 31px;
+      }
+      @include tablet {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+    .info-post {
+      margin-top: 15px;
+      color: $dark-gray;
+      @include small-laptop {
+        margin-top: 10px;
+      }
+    }
+    .info-item {
+      margin-top: 15px;
+      @include small-laptop {
+        margin-top: 10px;
+      }
+      &.empty {
+        display: none;
+      }
+      big {
+        color: $blue;
+      }
+    }
+    .info-items {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      @include small-desktop {
+        margin-top: 30px;
+      }
+      @include small-laptop {
+        margin-top: 25px;
+      }
+      @include tablet {
+        margin-top: 30px;
+      }
+      .items-title {
+        font-family: $lato;
+        font-size: 28px;
+        font-weight: 300;
+        line-height: 33px;
+        color: $blue;
+        @include small-desktop {
+          font-size: 22px;
+          line-height: 26px;
+        }
+        @include small-laptop {
+          font-size: 18px;
+          line-height: 21px;
+        }
+        @include tablet {
+          font-size: 15px;
+          line-height: 18px;
+        }
+      }
+      .items-items {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        @include small-laptop {
+          margin-top: 15px;
+        }
+        @include tablet {
+          margin-top: 10px;
+        }
+        p {
+          margin-top: 15px;
+          display: grid;
+          grid-template-columns: 6px 1fr;
+          gap: 10px;
+          color: $dark-gray;
+          @include tablet {
+            grid-template-columns: 5px 1fr;
+            gap: 5px;
+          }
+          &:first-child {
+            margin-top: unset;
+          }
+          &:before {
+            content: '';
+            margin-top: 6px;
+            width: 100%;
+            height: 6px;
+            border-radius: 100%;
+            background-color: $blue;
+            @include small-laptop {
+              margin-top: 5px;
+            }
+            @include tablet {
+              margin-top: 3px;
+              height: 5px;
+            }
+          }
+          @include small-desktop {
+            margin-top: 10px;
+          }
+          @include small-laptop {
+
+          }
+          @include tablet {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.background-popup-coaches {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  opacity: 0;
+  transition: opacity $transition;
+  &.active {
+    opacity: 0.8;
+    z-index: 221;
+  }
+}

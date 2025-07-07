@@ -1,0 +1,819 @@
+@import "../default/3. variables";
+@import "../default/4. mixins";
+
+.popup-news {
+  position: fixed;
+  z-index: 222;
+  top: 0;
+  bottom: 0;
+  right: -1080px;
+  height: 100%;
+  width: 1080px;
+  background-color: $background;
+  overflow-y: auto;
+  transition: right $transition;
+  @include small-desktop {
+    right: -900px;
+    width: 900px;
+  }
+  @include small-laptop {
+    right: -675px;
+    width: 675px;
+  }
+  @include tablet {
+    right: -100vw;
+    width: 100vw;
+  }
+  &.active {
+    right: 0;
+    .news-close {
+      right: 1130px;
+      @include small-desktop {
+        right: 940px;
+      }
+      @include small-laptop {
+        right: 695px;
+      }
+      @include tablet {
+        right: unset;
+        left: 15px;
+      }
+    }
+  }
+
+  .news-close {
+    position: fixed;
+    top: 50px;
+    right: -80px;
+    transition: right $transition, left $transition;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    @include hover {
+      svg {
+        circle {
+          fill: $blue;
+        }
+        path {
+          fill: $white;
+        }
+      }
+    }
+    @include small-desktop {
+      top: 40px;
+      right: -60px;
+      width: 60px;
+      height: 60px;
+    }
+    @include small-laptop {
+      top: 30px;
+      right: -45px;
+      width: 45px;
+      height: 45px;
+    }
+    @include tablet {
+      position: absolute;
+      top: 20px;
+      right: unset;
+      left: 100vw;
+      width: 32px;
+      height: 32px;
+    }
+    svg {
+      circle {
+        fill: $background;
+        transition: fill $transition;
+      }
+      path {
+        fill: $black;
+        transition: fill $transition;
+      }
+    }
+  }
+  .news-image {
+    width: 100%;
+    height: 450px;
+    @include small-desktop {
+      height: 375px;
+    }
+    @include small-laptop {
+      height: 275px;
+    }
+    @include tablet {
+      height: 450px;
+    }
+    img { }
+  }
+  .news-info {
+    padding: 35px 50px;
+    @include small-desktop {
+      padding: 30px;
+    }
+    @include small-laptop {
+      padding: 20px 25px;
+    }
+    @include tablet {
+      padding: 20px 15px;
+    }
+    .info-date {
+      padding: 10px;
+      width: max-content;
+      color: $blue;
+      border: 1px solid $blue;
+      @include small-laptop {
+        padding: 5px;
+      }
+    }
+    .info-content {
+      display: flex;
+      flex-direction: column;
+      h1 {
+        margin-top: 50px;
+        font-family: $lato;
+        font-size: 40px;
+        font-weight: 300;
+        line-height: 48px;
+        color: $black;
+        @include small-desktop {
+          margin-top: 30px;
+          font-size: 35px;
+          line-height: 42px;
+        }
+        @include small-laptop {
+          font-size: 26px;
+          line-height: 31px;
+        }
+        @include tablet {
+          margin-top: 25px;
+          font-size: 20px;
+          line-height: 24px;
+        }
+      }
+      h2 {
+        margin-top: 30px;
+        font-family: $lato;
+        font-size: 28px;
+        font-weight: 300;
+        line-height: 33px;
+        color: $black;
+        @include small-desktop {
+          margin-top: 25px;
+          font-size: 23px;
+          line-height: 27px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+          font-size: 18px;
+          line-height: 21px;
+        }
+      }
+      h3 {
+        margin-top: 25px;
+        font-family: $lato;
+        font-size: 26px;
+        font-weight: 300;
+        line-height: 30px;
+        color: $black;
+        @include small-desktop {
+          margin-top: 20px;
+          font-size: 22px;
+          line-height: 26px;
+        }
+        @include small-laptop {
+          margin-top: 15px;
+          font-size: 17px;
+          line-height: 20px;
+        }
+      }
+      h4 {
+        margin-top: 25px;
+        font-family: $lato;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 26px;
+        color: $black;
+        @include small-desktop {
+          margin-top: 20px;
+          font-size: 18px;
+          line-height: 21px;
+        }
+        @include small-laptop {
+          margin-top: 15px;
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+      h5 {
+        margin-top: 25px;
+        font-family: $lato;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 24px;
+        color: $black;
+        @include small-desktop {
+          margin-top: 20px;
+          font-size: 17px;
+          line-height: 20px;
+        }
+        @include small-laptop {
+          margin-top: 15px;
+          font-size: 15px;
+          line-height: 18px;
+        }
+      }
+      h6 {
+        margin-top: 25px;
+        font-family: $lato;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 21px;
+        color: $black;
+        @include small-desktop {
+          margin-top: 20px;
+          font-size: 16px;
+          line-height: 19px;
+        }
+        @include small-laptop {
+          margin-top: 15px;
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+      p {
+        margin-top: 30px;
+        font-family: $roboto;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 21px;
+        color: $black;
+        @include small-desktop {
+          margin-top: 25px;
+          font-size: 16px;
+          line-height: 18px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+          font-size: 14px;
+          line-height: 16px;
+        }
+        @include tablet {
+          font-size: 10px;
+          line-height: 11px;
+        }
+        a {
+          color: $blue;
+          text-decoration: underline;
+          text-underline-offset: 5px;
+          transition: color $transition;
+          @include tablet {
+            text-underline-offset: 2px;
+          }
+          @include hover {
+            color: $yellow;
+          }
+        }
+        strong {
+          font-weight: 500;
+        }
+        em {
+          font-style: italic;
+        }
+      }
+      ul {
+        margin-top: 30px;
+        margin-left: 20px;
+        list-style: disc;
+        @include small-desktop {
+          margin-top: 25px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+        }
+        li {
+          margin-top: 5px;
+          &:first-child {
+            margin-top: unset;
+          }
+        }
+      }
+      ol {
+        margin-top: 30px;
+        margin-left: 20px;
+        list-style: numeric;
+        @include small-desktop {
+          margin-top: 25px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+        }
+        li {
+          margin-top: 5px;
+          &:first-child {
+            margin-top: unset;
+          }
+          ul {
+            margin-top: 5px;
+            list-style: disc;
+            li {
+              margin-top: 5px;
+              &:first-child {
+                margin-top: unset;
+              }
+            }
+          }
+        }
+      }
+      .wp-block-image {
+        margin-top: 30px;
+        margin-left: -50px;
+        margin-right: -50px;
+        @include small-desktop {
+          margin-top: 25px;
+          margin-left: -30px;
+          margin-right: -30px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+          margin-left: -25px;
+          margin-right: -25px;
+        }
+        @include tablet {
+          margin-left: -15px;
+          margin-right: -15px;
+        }
+        img {
+          height: 450px;
+          @include small-desktop {
+            height: 375px;
+          }
+          @include small-laptop {
+            height: 275px;
+          }
+          @include tablet {
+            height: 230px;
+          }
+        }
+        figcaption {
+          margin-top: 15px;
+          margin-left: 50px;
+          margin-right: 50px;
+          margin-bottom: unset;
+          font-size: 20px;
+          line-height: 28px;
+          @include small-desktop {
+            margin-left: 30px;
+            margin-right: 30px;
+            font-size: 16px;
+            line-height: 18px;
+          }
+          @include small-laptop {
+            margin-top: 10px;
+            margin-left: 25px;
+            margin-right: 25px;
+            font-size: 14px;
+            line-height: 16px;
+          }
+          @include tablet {
+            margin-left: 15px;
+            margin-right: 15px;
+            font-size: 10px;
+            line-height: 11px;
+          }
+        }
+      }
+      .wp-block-gallery {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px !important;
+        @include small-desktop {
+          margin-top: 25px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+          gap: 10px !important;
+        }
+        @include tablet {
+          gap: 5px !important;
+        }
+        .wp-block-image {
+          width: 100% !important;
+          height: unset;
+          cursor: pointer;
+
+          &:before {
+            content: url("/wp-content/themes/lvlup_theme/assets/media-file/loop.png");
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity $transition;
+          }
+          @include hover {
+            &:before {
+              opacity: 1;
+            }
+          }
+          img {
+            flex: unset !important;
+            height: 290px !important;
+
+            @include small-desktop {
+              height: 240px !important;
+            }
+            @include small-laptop {
+              height: 180px !important;
+            }
+            @include tablet {
+              height: 120px !important;
+            }
+          }
+        }
+      }
+      .wp-block-video, .wp-block-embed {
+        margin-top: 30px;
+        margin-left: -50px;
+        margin-right: -50px;
+        @include small-desktop {
+          margin-top: 25px;
+          margin-left: -30px;
+          margin-right: -30px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+          margin-left: -25px;
+          margin-right: -25px;
+        }
+        @include tablet {
+          margin-left: -15px;
+          margin-right: -15px;
+        }
+        iframe {
+          width: 100%;
+          height: 450px;
+          @include small-desktop {
+            height: 375px;
+          }
+          @include small-laptop {
+            height: 275px;
+          }
+          @include tablet {
+            height: 230px;
+          }
+        }
+        figcaption {
+          margin-top: 15px;
+          margin-left: 50px;
+          margin-right: 50px;
+          margin-bottom: unset;
+          font-size: 20px;
+          line-height: 28px;
+          @include small-desktop {
+            margin-left: 30px;
+            margin-right: 30px;
+            font-size: 16px;
+            line-height: 18px;
+          }
+          @include small-laptop {
+            margin-top: 10px;
+            margin-left: 25px;
+            margin-right: 25px;
+            font-size: 14px;
+            line-height: 16px;
+          }
+          @include tablet {
+            margin-left: 15px;
+            margin-right: 15px;
+            font-size: 10px;
+            line-height: 11px;
+          }
+        }
+      }
+      .swiper-acf-block-default--wrap {
+        margin-top: 30px;
+        margin-left: -50px;
+        margin-right: -50px;
+        @include small-desktop {
+          margin-top: 25px;
+          margin-left: -30px;
+          margin-right: -30px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+          margin-left: -25px;
+          margin-right: -25px;
+        }
+        @include tablet {
+          margin-left: -15px;
+          margin-right: -15px;
+        }
+        .swiper-acf-block-default {
+          position: relative;
+          .swiper-wrapper {
+            .swiper-slide {
+              position: relative;
+              height: 450px !important;
+              cursor: pointer;
+              @include small-desktop {
+                height: 375px !important;
+              }
+              @include small-laptop {
+                height: 275px !important;
+              }
+              @include tablet {
+                height: 230px !important;
+              }
+
+              &:before {
+                content: url("/wp-content/themes/lvlup_theme/assets/media-file/loop.png");
+                position: absolute;
+                z-index: 2;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity $transition;
+              }
+              @include hover {
+                &:before {
+                  opacity: 1;
+                }
+              }
+              img { }
+              a {
+                img { }
+              }
+            }
+          }
+          .swiper-acf-block-default--navigation {
+            .slider-btn {
+              position: absolute;
+              top: 200px;
+              z-index: 2;
+              width: 18px;
+              height: 52px;
+              cursor: pointer;
+              @include small-desktop {
+                top: 165px;
+              }
+              @include small-laptop {
+                top: 120px;
+              }
+              @include tablet {
+                top: 105px;
+              }
+              @include hover {
+                svg {
+                  path {
+                    fill: $blue;
+                  }
+                }
+              }
+              svg {
+                path {
+                  fill: $white;
+                  transition: fill $transition;
+                }
+              }
+              &.prev {
+                left: 50px;
+                @include small-desktop {
+                  left: 30px;
+                }
+                @include small-laptop {
+                  left: 25px;
+                }
+                @include tablet {
+                  left: 15px;
+                }
+              }
+              &.next {
+                right: 50px;
+                @include small-desktop {
+                  right: 30px;
+                }
+                @include small-laptop {
+                  right: 25px;
+                }
+                @include tablet {
+                  right: 15px;
+                }
+              }
+              @include small-desktop {
+                width: 11px;
+                height: 35px;
+              }
+              @include tablet {
+                width: 7px;
+                height: 20px;
+              }
+            }
+          }
+          .swiper-acf-block-default--pagination {
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            right: 0;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            .swiper-pagination-bullet {
+              margin-left: 15px;
+              margin-right: unset;
+              width: 100px;
+              height: 2px;
+              background: $white;
+              border-radius: unset;
+              opacity: unset;
+              @include small-laptop {
+                width: 80px;
+              }
+              @include tablet {
+                width: 40px;
+              }
+              &.swiper-pagination-bullet-active {
+                background: $yellow;
+              }
+            }
+          }
+        }
+      }
+      .wp-block-table {
+        margin-top: 30px;
+        overflow-y: hidden;
+        @include small-desktop {
+          margin-top: 25px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+        }
+        figcaption {
+          margin-top: 15px;
+          margin-bottom: unset;
+          font-size: 20px;
+          line-height: 28px;
+          @include small-desktop {
+            font-size: 16px;
+            line-height: 18px;
+          }
+          @include small-laptop {
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 16px;
+          }
+          @include tablet {
+            font-size: 10px;
+            line-height: 11px;
+          }
+        }
+        table {
+          min-width: 767px;
+          max-width: 1010px;
+          width: 100%;
+          border-collapse: collapse;
+          thead {
+            border: unset;
+            tr {
+              th {
+                border: unset;
+                padding: 20px 35px;
+                font-size: 28px;
+                line-height: 39px;
+                color: $white;
+                background-color: $blue;
+                text-align: left;
+                @include small-desktop {
+                  padding: 20px 30px;
+                  font-size: 23px;
+                  line-height: 32px;
+                }
+                @include small-laptop {
+                  padding: 25px 20px;
+                  font-size: 18px;
+                  line-height: 25px;
+                }
+              }
+            }
+          }
+          tbody {
+            border: unset;
+            tr {
+              &:nth-child(even) {
+                td {
+                  background-color: $white;
+                }
+              }
+              td {
+                border: unset;
+                padding: 25px 35px;
+                font-size: 20px;
+                line-height: 28px;
+                text-align: left;
+                background-color: $background;
+                @include small-desktop {
+                  padding: 20px 30px;
+                  font-size: 16px;
+                  line-height: 22px;
+                }
+                @include small-laptop {
+                  padding: 25px 20px;
+                  font-size: 14px;
+                  line-height: 19px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .wp-block-quote {
+        margin-top: 30px;
+        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+        border-left: 5px solid $blue;
+        overflow-y: hidden;
+        @include small-desktop {
+          margin-top: 25px;
+          padding-left: 25px;
+        }
+        @include small-laptop {
+          margin-top: 20px;
+          padding-left: 20px;
+        }
+        @include tablet {
+          padding-left: 10px;
+        }
+        p {
+          order: 2;
+          margin-top: 30px;
+          font-size: 20px;
+          line-height: 30px;
+          font-style: normal;
+          @include small-desktop {
+            font-size: 16px;
+            line-height: 24px;
+          }
+          @include small-laptop {
+            font-size: 14px;
+            line-height: 21px;
+          }
+          @include tablet {
+            margin-top: 20px;
+            font-size: 10px;
+            line-height: 15px;
+          }
+          &:before {
+            content: '— ';
+          }
+        }
+        cite {
+          order: 1;
+          margin-top: unset;
+          font-size: 20px;
+          line-height: 30px;
+          font-style: normal;
+          @include small-desktop {
+            font-size: 16px;
+            line-height: 24px;
+          }
+          @include small-laptop {
+            font-size: 14px;
+            line-height: 21px;
+          }
+          @include tablet {
+            font-size: 10px;
+            line-height: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.background-popup-news {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  opacity: 0;
+  transition: opacity $transition;
+  &.active {
+    opacity: 0.8;
+    z-index: 221;
+  }
+}

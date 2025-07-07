@@ -1,0 +1,378 @@
+.cafe-page {
+  .cafe-page__features {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 140px;
+    background-color: $background;
+    @include small-desktop {
+      padding-top: 80px;
+      padding-bottom: 100px;
+    }
+    @include small-laptop {
+      padding-top: 60px;
+      padding-bottom: 80px;
+    }
+    @include tablet {
+      padding-top: 50px;
+      padding-bottom: 60px;
+    }
+    .features__body {
+      display: flex;
+      flex-direction: column;
+      .body__description {
+        text-align: right;
+      }
+      .body__items {
+        margin-top: 50px;
+        display: grid;
+        gap: 20px;
+        &.items-1, &.items-2, &.items-3, &.items-4, &.items-6 {
+          .items__item {
+            height: 430px;
+            @include small-desktop {
+              height: 360px;
+            }
+            @include small-laptop {
+              height: 270px;
+            }
+            @include tablet {
+              height: unset;
+            }
+          }
+        }
+        &.items-5 {
+          .items__item {
+            height: 430px;
+            @include small-desktop {
+              height: 360px;
+            }
+            @include small-laptop {
+              height: 270px;
+            }
+            @include tablet {
+              height: unset;
+            }
+            &.item-5 {
+              height: 100%;
+            }
+          }
+        }
+        &.items-1 {
+          grid-template-columns: 1fr;
+          grid-template-areas: 'first first';
+          @include tablet {
+            grid-template-areas: 'first';
+          }
+        }
+        &.items-2 {
+          grid-template-columns: 1fr 1fr;
+          grid-template-areas: 'first second';
+          @include tablet {
+            grid-template-areas: 'first' 'second';
+          }
+        }
+        &.items-3 {
+          grid-template-columns: 1fr 1fr;
+          grid-template-areas: 'first second' 'third third';
+          @include tablet {
+            grid-template-areas: 'first' 'second' 'third';
+          }
+        }
+        &.items-4 {
+          grid-template-columns: 1fr 1fr;
+          grid-template-areas: 'first second' 'third fourth';
+          @include tablet {
+            grid-template-areas: 'first' 'second' 'fourth' 'third';
+          }
+        }
+        &.items-5 {
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-areas: 'first second five' 'third fourth five';
+          @include tablet {
+            grid-template-areas: 'five' 'first' 'second' 'third' 'fourth';
+          }
+        }
+        &.items-6 {
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-areas: 'first second six' 'third fourth five';
+          @include tablet {
+            grid-template-areas: 'first' 'second' 'six' 'third' 'fourth' 'five';
+          }
+        }
+        @include small-desktop {
+          margin-top: 40px;
+          gap: 15px;
+        }
+        @include small-laptop {
+          margin-top: 30px;
+          gap: 10px;
+        }
+        @include tablet {
+          grid-template-columns: 1fr !important;
+        }
+        .items__item {
+          position: relative;
+          padding: 50px 30px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          background-color: $gray;
+          @include small-desktop {
+            padding: 40px 25px;
+          }
+          @include small-laptop {
+            padding: 30px 20px;
+          }
+          @include tablet {
+            padding: 20px 10px;
+            &.item-image {
+              width: 100% !important;
+              height: 175px !important;
+            }
+          }
+          img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+          .item__title {
+            font-family: $lato;
+            font-size: 34px;
+            line-height: 40px;
+            color: $blue;
+            @include small-desktop {
+              font-size: 28px;
+              line-height: 33px;
+            }
+            @include small-laptop {
+              font-size: 20px;
+              line-height: 24px;
+            }
+            @include tablet {
+              font-size: 15px;
+              line-height: 19px;
+            }
+          }
+          .item__description {
+            color: $dark-gray;
+            @include tablet {
+              margin-top: 75px;
+            }
+          }
+          .item__icons {
+            position: absolute;
+          }
+          &.item-1 {
+            grid-area: first;
+            .item__icons {
+              top: 130px;
+              right: 0;
+              width: 220px;
+              height: 85px;
+            }
+            @include small-desktop {
+              .item__icons {
+                top: 105px;
+                right: 0;
+                width: 190px;
+                height: 70px;
+              }
+            }
+            @include small-laptop {
+              .item__icons {
+                top: 80px;
+                right: 0;
+                width: 145px;
+                height: 55px;
+              }
+            }
+            @include tablet {
+              .item__icons {
+                top: 20px;
+                right: 0;
+                width: 135px;
+                height: 40px;
+              }
+            }
+          }
+          &.item-2 {
+            grid-area: second;
+            .item__icons {
+              top: 30px;
+              right: 30px;
+              width: 185px;
+              height: 185px;
+            }
+            @include small-desktop {
+              .item__icons {
+                top: 25px;
+                right: 35px;
+                width: 155px;
+                height: 155px;
+              }
+            }
+            @include small-laptop {
+              .item__icons {
+                top: 20px;
+                right: 30px;
+                width: 115px;
+                height: 115px;
+              }
+            }
+            @include tablet {
+              .item__icons {
+                top: 10px;
+                right: 15px;
+                width: 75px;
+                height: 75px;
+              }
+            }
+          }
+          &.item-3 {
+            grid-area: third;
+            .item__icons {
+              top: 140px;
+              left: 0;
+              width: 410px;
+              height: 60px;
+            }
+            @include small-desktop {
+              .item__icons {
+                top: 115px;
+                left: 0;
+                width: 345px;
+                height: 50px;
+              }
+            }
+            @include small-laptop {
+              .item__icons {
+                top: 85px;
+                left: 0;
+                width: 260px;
+                height: 40px;
+              }
+            }
+            @include tablet {
+              .item__icons {
+                top: 55px;
+                left: 0;
+                width: 195px;
+                height: 30px;
+              }
+            }
+          }
+          &.item-4 {
+            grid-area: fourth;
+            .item__icons {
+              top: 140px;
+              left: 0;
+              width: 410px;
+              height: 60px;
+            }
+            @include small-desktop {
+              .item__icons {
+                top: 115px;
+                left: 0;
+                width: 345px;
+                height: 50px;
+              }
+            }
+            @include small-laptop {
+              .item__icons {
+                top: 85px;
+                left: 0;
+                width: 260px;
+                height: 40px;
+              }
+            }
+            @include tablet {
+              .item__icons {
+                top: 55px;
+                left: 0;
+                width: 195px;
+                height: 30px;
+              }
+            }
+          }
+          &.item-5 {
+            grid-area: five;
+            .item__icons {
+              top: 75px;
+              right: 0;
+              width: 105px;
+              height: 205px;
+            }
+            @include small-desktop {
+              .item__icons {
+                top: 55px;
+                right: 0;
+                width: 90px;
+                height: 170px;
+              }
+            }
+            @include small-laptop {
+              .item__icons {
+                top: 45px;
+                right: 0;
+                width: 70px;
+                height: 125px;
+              }
+            }
+            @include tablet {
+              .item__icons {
+                top: 10px;
+                right: 0;
+                width: 50px;
+                height: 90px;
+              }
+            }
+          }
+          &.item-6 {
+            grid-area: six;
+            .item__icons {
+              top: 0;
+              right: 30px;
+              width: 45px;
+              height: 210px;
+            }
+            @include small-desktop {
+              .item__icons {
+                top: 0;
+                right: 25px;
+                width: 50px;
+                height: 250px;
+              }
+            }
+            @include small-laptop {
+              .item__icons {
+                top: 0;
+                right: 30px;
+                width: 30px;
+                height: 145px;
+              }
+            }
+            @include tablet {
+              .item__icons {
+                top: 0;
+                right: 20px;
+                width: 30px;
+                height: 100px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .default-sliders__slider {
+    .slider__body {
+      .body__info {
+        .info__description {
+          max-width: 755px;
+        }
+      }
+    }
+  }
+}

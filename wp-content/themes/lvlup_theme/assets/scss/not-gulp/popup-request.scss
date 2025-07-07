@@ -1,0 +1,852 @@
+@import "../default/3. variables";
+@import "../default/4. mixins";
+
+.popup-request {
+  position: fixed;
+  z-index: 222;
+  top: 0;
+  bottom: 0;
+  right: -1080px;
+  height: 100%;
+  width: 1080px;
+  background-color: $background;
+  overflow-y: auto;
+  transition: right $transition;
+  @include small-desktop {
+    right: -900px;
+    width: 900px;
+  }
+  @include small-laptop {
+    right: -675px;
+    width: 675px;
+  }
+  @include tablet {
+    right: -100vw;
+    width: 100vw;
+  }
+  &.active {
+    right: 0;
+    .popup-close {
+      right: 1130px;
+      @include small-desktop {
+        right: 940px;
+      }
+      @include small-laptop {
+        right: 695px;
+      }
+      @include tablet {
+        right: unset;
+        left: 15px;
+      }
+    }
+  }
+
+  .popup-close {
+    position: fixed;
+    top: 50px;
+    right: -80px;
+    transition: right $transition, left $transition;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    @include hover {
+      svg {
+        circle {
+          fill: $blue;
+        }
+        path {
+          fill: $white;
+        }
+      }
+    }
+    @include small-desktop {
+      top: 40px;
+      right: -60px;
+      width: 60px;
+      height: 60px;
+    }
+    @include small-laptop {
+      top: 30px;
+      right: -45px;
+      width: 45px;
+      height: 45px;
+    }
+    @include tablet {
+      position: absolute;
+      top: 20px;
+      right: unset;
+      left: 100vw;
+      width: 32px;
+      height: 32px;
+    }
+    svg {
+      circle {
+        fill: $background;
+        transition: fill $transition;
+      }
+      path {
+        fill: $black;
+        transition: fill $transition;
+      }
+    }
+  }
+
+  .popup-icon {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: 50px;
+    height: 145px;
+    @include small-desktop {
+      left: 30px;
+      width: 40px;
+      height: 120px;
+    }
+    @include small-laptop {
+      left: 25px;
+      width: 30px;
+      height: 90px;
+    }
+    @include tablet {
+      display: none;
+    }
+  }
+
+  .popup-info {
+    padding: 100px 50px 60px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include small-desktop {
+      padding: 80px 30px 50px 30px;
+    }
+    @include small-laptop {
+      padding: 60px 25px 60px 25px;
+    }
+    @include tablet {
+      padding: 50px 15px 25px 15px;
+    }
+    .popup-title {
+      font-weight: 400;
+    }
+    .popup-form {
+      margin-top: 30px;
+      width: 100%;
+      @include small-desktop {
+        margin-top: 25px;
+      }
+      @include small-laptop {
+        margin-top: 20px;
+      }
+      @include tablet {
+        margin-top: 10px;
+      }
+      .wpcf7-form {
+        br {
+          display: none;
+        }
+        .wpcf7-spinner {
+          display: none;
+        }
+        .wpcf7-response-output {
+          display: none;
+        }
+        .wpcf7-not-valid-tip {
+          display: none;
+        }
+        input {
+          border-radius: unset;
+          outline: unset;
+        }
+        .wpcf7-form__block.selected {
+          margin-top: 40px;
+          display: flex;
+          flex-direction: column;
+          @include small-laptop {
+            margin-top: 30px;
+          }
+          @include tablet {
+            margin-top: 45px;
+          }
+          .selected__title {
+            font-size: 18px;
+            line-height: 25px;
+            @include small-desktop {
+              font-size: 16px;
+              line-height: 22px;
+            }
+            @include small-laptop {
+              font-size: 14px;
+              line-height: 19px;
+            }
+            @include tablet {
+              font-size: 13px;
+              line-height: 18px;
+            }
+          }
+          .selected__items {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid $blue;
+            @include tablet {
+              border: 1px solid $blue;
+            }
+            .items__item {
+              margin: 0 20px;
+              padding: 30px 0;
+              display: grid;
+              grid-template-columns: auto auto;
+              justify-content: space-between;
+              gap: 10px;
+              border-bottom: 2px solid $gray;
+              &.active {
+                .item__left {
+                  .left__checked {
+                    &:before {
+                      opacity: 1;
+                    }
+                  }
+                }
+              }
+              @include small-desktop {
+                margin: 0 20px;
+                padding: 25px 0;
+              }
+              @include small-laptop {
+                margin: 0 15px;
+                padding: 15px 0;
+              }
+              @include tablet {
+                margin: 0 5px;
+                padding: 30px 0;
+                border-bottom: 1px solid $gray;
+              }
+              .item__left {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .left__checked  {
+                  position: relative;
+                  width: 30px;
+                  height: 30px;
+                  border: 2px solid $blue;
+                  border-radius: 100%;
+                  cursor: pointer;
+                  @include hover {
+                    &:before {
+                      opacity: 0.5;
+                    }
+                  }
+                  @include small-desktop {
+                    width: 25px;
+                    height: 25px;
+                  }
+                  @include small-laptop {
+                    width: 22px;
+                    height: 22px;
+                  }
+                  @include tablet {
+                    width: 23px;
+                    height: 23px;
+                    border: 1px solid $blue;
+                  }
+                  &:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    width: 12px;
+                    height: 12px;
+                    background-color: $blue;
+                    border-radius: 100%;
+                    opacity: 0;
+                    transition: opacity $transition;
+                    @include small-desktop {
+                      width: 10px;
+                      height: 10px;
+                    }
+                    @include small-laptop {
+                      width: 8px;
+                      height: 8px;
+                    }
+                    @include tablet {
+                      width: 9px;
+                      height: 9px;
+                    }
+                  }
+                }
+                .left__number {
+                  margin-left: 30px;
+                  margin-right: 30px;
+                  font-size: 20px;
+                  line-height: 28px;
+                  color: $blue;
+                  @include small-desktop {
+                    margin-left: 45px;
+                    margin-right: 30px;
+                    font-size: 18px;
+                    line-height: 25px;
+                  }
+                  @include small-laptop {
+                    margin-left: 30px;
+                    margin-right: 20px;
+                    font-size: 15px;
+                    line-height: 21px;
+                  }
+                  @include tablet {
+                    margin-left: 10px;
+                    margin-right: 15px;
+                    font-size: 16px;
+                    line-height: 22px;
+                  }
+                }
+                .left__name {
+                  font-size: 18px;
+                  font-weight: 400;
+                  line-height: 25px;
+                  @include small-desktop {
+                    font-size: 16px;
+                    line-height: 22px;
+                  }
+                  @include small-laptop {
+                    font-size: 14px;
+                    line-height: 19px;
+                  }
+                  @include tablet {
+                    font-size: 13px;
+                    line-height: 18px;
+                  }
+                  big {
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 25px;
+                    @include small-desktop {
+                      font-size: 16px;
+                      line-height: 22px;
+                    }
+                    @include small-laptop {
+                      font-size: 14px;
+                      line-height: 19px;
+                    }
+                    @include tablet {
+                      font-size: 13px;
+                      line-height: 18px;
+                    }
+                  }
+                }
+              }
+              .item__right {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .right__price {
+                  margin-top: 5px;
+                  font-size: 16px;
+                  line-height: 22px;
+                  color: $dark-gray;
+                  @include small-desktop {
+                    margin-top: 4px;
+                    font-size: 14px;
+                    line-height: 19px;
+                  }
+                  @include small-laptop {
+                    margin-top: 2px;
+                    font-size: 12px;
+                    line-height: 16px;
+                  }
+                  @include tablet {
+                    font-size: 12px;
+                    line-height: 16px;
+                  }
+                }
+                .right__stock {
+                  position: relative;
+                  margin-left: 15px;
+                  @include small-desktop {
+                    margin-left: 10px;
+                  }
+                  @include small-laptop {
+                    margin-left: 8px;
+                  }
+                  @include tablet {
+                    margin-left: 5px;
+                  }
+                  .stock__percent {
+                    position: absolute;
+                    left: 0;
+                    top: -10px;
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 16px;
+                    color: $blue;
+                    @include small-desktop {
+                      font-size: 10px;
+                      line-height: 14px;
+                    }
+                    @include small-laptop {
+                      font-size: 8px;
+                      line-height: 10px;
+                    }
+                    @include tablet {
+                      font-size: 9px;
+                      line-height: 14px;
+                    }
+                  }
+                  .stock__amount {
+                    font-size: 24px;
+                    font-weight: 500;
+                    line-height: 33px;
+                    color: $blue;
+                    @include small-desktop {
+                      font-size: 20px;
+                      line-height: 28px;
+                    }
+                    @include small-laptop {
+                      font-size: 16px;
+                      line-height: 22px;
+                    }
+                    @include tablet {
+                      font-size: 18px;
+                      line-height: 25px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .wpcf7-form__block.personal {
+          .items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            @include small-desktop {
+              gap: 25px;
+            }
+            @include small-laptop {
+              gap: 20px;
+            }
+            @include tablet {
+              grid-template-columns: 1fr;
+              gap: unset;
+            }
+          }
+          .item {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr;
+            @include small-desktop {
+              margin-top: 25px;
+            }
+            @include small-laptop {
+              margin-top: 20px;
+            }
+            &.hidden {
+              display: none;
+            }
+            .input {
+              padding: 0 0 10px 0;
+              width: 100%;
+              font-family: $roboto;
+              font-size: 18px;
+              font-weight: 300;
+              line-height: 25px;
+              color: $black;
+              background-color: unset;
+              border-top: unset;
+              border-left: unset;
+              border-right: unset;
+              border-bottom: 1px solid $blue;
+              transition: color $transition, border-bottom $transition;
+              @include small-desktop {
+                font-size: 16px;
+                line-height: 22px;
+              }
+              @include small-laptop {
+                padding-bottom: 5px;
+                font-size: 14px;
+                line-height: 19px;
+              }
+              @include tablet {
+                padding-bottom: 10px;
+                font-size: 13px;
+                line-height: 18px;
+              }
+              &.wpcf7-not-valid {
+                color: $red;
+                border-bottom: 1px solid $red;
+                &::placeholder {
+                  color: $red;
+                }
+              }
+              &::placeholder {
+                color: $dark-gray;
+                transition: color $transition;
+              }
+            }
+            textarea {
+              padding: 10px 15px !important;
+              height: 140px;
+              border: 1px solid $blue !important;
+              resize: none;
+              @include small-desktop {
+                padding: 10px;
+                height: 115px;
+              }
+              @include small-laptop {
+                height: 90px;
+              }
+              @include tablet {
+                height: 140px;
+              }
+            }
+          }
+          .documents {
+            .documents-title {
+              margin-top: 30px;
+              font-family: $roboto;
+              font-size: 18px;
+              font-weight: 300;
+              line-height: 25px;
+              @include small-desktop {
+                margin-top: 25px;
+                font-size: 16px;
+                line-height: 22px;
+              }
+              @include small-laptop {
+                margin-top: 20px;
+                font-size: 14px;
+                line-height: 19px;
+              }
+              @include tablet {
+                margin-top: 25px;
+                font-size: 13px;
+                line-height: 18px;
+              }
+            }
+            .documents-button {
+              margin-top: 20px;
+              width: 275px;
+              height: 55px;
+              font-size: 18px;
+              line-height: 21px;
+              @include small-desktop {
+                margin-top: 15px;
+                width: 240px;
+                height: 45px;
+                font-size: 16px;
+                line-height: 18px;
+              }
+              @include small-laptop {
+                margin-top: 10px;
+                width: 210px;
+                height: 35px;
+                font-size: 14px;
+                line-height: 16px;
+              }
+              @include tablet {
+                margin-top: 15px;
+                width: 100%;
+                height: 55px;
+                font-size: 18px;
+                line-height: 21px;
+              }
+            }
+            .codedropz-upload-wrapper {
+              display: flex;
+              flex-direction: column;
+              .codedropz-upload-handler {
+                display: none;
+              }
+              .has-error-msg {
+                order: 3;
+                color: $red;
+                font-family: $roboto;
+                font-style: normal;
+                font-size: 18px;
+                font-weight: 300;
+                line-height: 20px;
+                @include small-desktop {
+                  font-size: 16px;
+                  line-height: 18px;
+                }
+                @include small-laptop {
+                  font-size: 14px;
+                  line-height: 16px;
+                }
+                @include tablet {
+                  font-size: 10px;
+                  line-height: 12px;
+                }
+              }
+              .dnd-upload-status {
+                order: 2;
+                margin-top: 20px;
+                padding: unset;
+                @include small-desktop {
+                  margin-top: 15px;
+                }
+                @include small-laptop {
+                  margin-top: 10px;
+                }
+                @include tablet {
+                  margin-top: 15px;
+                }
+                .dnd-upload-image {
+                  display: none;
+                }
+                .dnd-upload-details {
+                  padding-left: unset;
+                  width: 100%;
+                  .name {
+                    display: grid;
+                    grid-template-columns: max-content max-content;
+                    @include tablet {
+                      grid-template-columns: 1fr;
+                    }
+                    span {
+                      font-family: $roboto;
+                      font-size: 18px;
+                      font-weight: 300;
+                      line-height: 20px;
+                      color: $dark-gray;
+                      font-feature-settings: "lnum";
+                      @include small-desktop {
+                        font-size: 16px;
+                        line-height: 18px;
+                      }
+                      @include small-laptop {
+                        font-size: 14px;
+                        line-height: 16px;
+                      }
+                      @include tablet {
+                        font-size: 10px;
+                        line-height: 12px;
+                      }
+                    }
+                    em {
+                      font-family: $roboto;
+                      font-style: normal;
+                      font-size: 16px;
+                      font-weight: 300;
+                      line-height: 18px;
+                      color: $dark-gray;
+                      font-feature-settings: "lnum";
+                      @include small-desktop {
+                        font-size: 14px;
+                        line-height: 16px;
+                      }
+                      @include small-laptop {
+                        font-size: 13px;
+                        line-height: 15px;
+                      }
+                      @include tablet {
+                        font-size: 10px;
+                        line-height: 11px;
+                      }
+                    }
+                  }
+                  .remove-file {
+                    top: 6px;
+                    @include tablet {
+                      top: 7px;
+                    }
+                  }
+                  .dnd-progress-bar {
+                    border-radius: unset;
+                    background: $dark-gray;
+                    height: 10px;
+                    span {
+                      background: $blue;
+                      color: $blue;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .wpcf7-form__block.privacy {
+          .privacy__accept {
+            margin-top: 50px;
+            width: 100%;
+            height: 60px;
+            border: unset;
+            outline: unset;
+            font-size: 18px;
+            line-height: 25px;
+            opacity: 1;
+            transition: opacity $transition, color $transition, background-color $transition, border $transition;
+            cursor: pointer;
+            &:disabled {
+              opacity: 0.5;
+              pointer-events: none;
+            }
+            @include small-desktop {
+              height: 50px;
+              font-size: 16px;
+              line-height: 22px;
+            }
+            @include small-laptop {
+              margin-top: 30px;
+              height: 40px;
+              font-size: 14px;
+              line-height: 19px;
+            }
+            @include tablet {
+              height: 60px;
+              font-size: 18px;
+              line-height: 21px;
+            }
+          }
+
+          .wpcf7-acceptance {
+            .wpcf7-list-item {
+              margin: 25px 0 0 0;
+              .error-message-terms {
+                margin-top: 10px;
+                font-size: 16px;
+                line-height: 22px;
+                color: $red;
+                @include middle-laptop {
+                  margin-top: 5px;
+                  font-size: 13px;
+                  line-height: 16px;
+                }
+              }
+              @include small-laptop {
+                margin: 20px 0 0 0;
+              }
+              @include tablet {
+                margin: 15px 0 0 0;
+              }
+              .error-message-terms { }
+              label {
+                display: grid;
+                grid-template-columns: 25px 1fr;
+                align-items: center;
+                gap: 15px;
+                &.wpcf7-not-valid-terms {
+                  padding: 10px 20px;
+                  border: 2px solid $red;
+                }
+                @include small-desktop {
+                  grid-template-columns: 20px 1fr;
+                  gap: 10px;
+                }
+                @include small-laptop {
+                  grid-template-columns: 15px 1fr;
+                }
+                @include tablet {
+                  grid-template-columns: 25px 1fr;
+                }
+                &.wpcf7-not-valid-terms { }
+                .privacy__checkbox {
+                  position: relative;
+                  margin: unset !important;
+                  width: 25px;
+                  height: 25px;
+                  cursor: pointer;
+                  background-color: rgba(0, 0, 0, 0);
+                  border: 2px solid $black;
+                  border-radius: unset;
+                  @include small-desktop {
+                    width: 20px;
+                    height: 20px;
+                  }
+                  @include small-laptop {
+                    width: 15px;
+                    height: 15px;
+                  }
+                  @include tablet {
+                    width: 25px;
+                    height: 25px;
+                  }
+                  &:checked:before {
+                    content: '';
+                    position: absolute;
+                    top: 1px;
+                    left: 2px;
+                    width: 18px;
+                    height: 18px;
+                    background-image: url("/wp-content/themes/lvlup_theme/assets/media-file/check-form.svg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    @include small-desktop {
+                      top: 1px;
+                      left: 0;
+                      width: 15px;
+                      height: 15px;
+                    }
+                    @include small-laptop {
+                      top: 2px;
+                      left: 1px;
+                      width: 9px;
+                      height: 9px;
+                    }
+                    @include tablet {
+                      top: 1px;
+                      left: 2px;
+                      width: 18px;
+                      height: 18px;
+                    }
+                  }
+                }
+                .wpcf7-list-item-label {
+                  font-family: $roboto;
+                  font-size: 14px;
+                  font-weight: 300;
+                  line-height: 19px;
+                  color: $black;
+                  @include small-desktop {
+
+                  }
+                  @include small-laptop {
+                    font-size: 13px;
+                    line-height: 18px;
+                  }
+                  @include tablet {
+                    font-size: 12px;
+                    line-height: 14px;
+                  }
+                  a {
+                    text-decoration: underline;
+                    text-underline-offset: 2px;
+                    color: $blue;
+                    transition: color $transition;
+                    @include hover {
+                      color: $yellow;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.background-popup-request {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  opacity: 0;
+  transition: opacity $transition;
+  &.active {
+    opacity: 0.8;
+    z-index: 221;
+  }
+}

@@ -1,0 +1,186 @@
+@import "../default/3. variables";
+@import "../default/4. mixins";
+
+.popup-features {
+  position: fixed;
+  z-index: 222;
+  top: 0;
+  bottom: 0;
+  right: -1080px;
+  height: 100%;
+  width: 1080px;
+  background-color: $background;
+  overflow-y: auto;
+  transition: right $transition;
+  @include small-desktop {
+    right: -900px;
+    width: 900px;
+  }
+  @include small-laptop {
+    right: -675px;
+    width: 675px;
+  }
+  @include tablet {
+    right: -100vw;
+    width: 100vw;
+  }
+  &.active {
+    right: 0;
+    .features-close {
+      right: 1130px;
+      @include small-desktop {
+        right: 940px;
+      }
+      @include small-laptop {
+        right: 695px;
+      }
+      @include tablet {
+        right: unset;
+        left: 15px;
+      }
+    }
+  }
+  .features-close {
+    position: fixed;
+    top: 50px;
+    right: -80px;
+    transition: right $transition, left $transition;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    @include hover {
+      svg {
+        circle {
+          fill: $blue;
+        }
+        path {
+          fill: $white;
+        }
+      }
+    }
+    @include small-desktop {
+      top: 40px;
+      right: -60px;
+      width: 60px;
+      height: 60px;
+    }
+    @include small-laptop {
+      top: 30px;
+      right: -45px;
+      width: 45px;
+      height: 45px;
+    }
+    @include tablet {
+      position: absolute;
+      top: 20px;
+      right: unset;
+      left: 100vw;
+      width: 32px;
+      height: 32px;
+    }
+    svg {
+      circle {
+        fill: $background;
+        transition: fill $transition;
+        @include tablet {
+          fill: $white;
+        }
+      }
+      path {
+        fill: $black;
+        transition: fill $transition;
+      }
+    }
+  }
+  .features-info {
+    padding: 80px 50px;
+    @include small-desktop {
+      padding: 60px 30px;
+    }
+    @include small-laptop {
+      padding: 50px 25px;
+    }
+    @include tablet {
+      padding: 70px 15px;
+    }
+    .info-title {
+      font-family: $lato;
+      font-size: 40px;
+      font-weight: 300;
+      line-height: 48px;
+      color: $blue;
+      @include small-desktop {
+        font-size: 35px;
+        line-height: 42px;
+      }
+      @include small-laptop {
+        font-size: 26px;
+        line-height: 31px;
+      }
+      @include tablet {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+    .info-more {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      @include small-desktop {
+        margin-top: 15px;
+      }
+      @include small-laptop {
+        margin-top: 10px;
+      }
+      @include tablet {
+        margin-top: 5px;
+      }
+      p {
+        margin-top: 15px;
+        @include small-desktop {
+          margin-top: 10px;
+        }
+        @include small-laptop {
+          margin-top: 10px;
+        }
+        @include tablet {
+          margin-top: 5px;
+        }
+        strong {
+          font-weight: 600;
+        }
+      }
+    }
+    .info-button {
+      margin-top: 60px;
+      width: 100%;
+      @include small-desktop {
+        margin-top: 50px;
+      }
+      @include small-laptop {
+        margin-top: 40px;
+      }
+      @include tablet {
+        margin-top: 25px;
+      }
+    }
+  }
+}
+
+.background-popup-features {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  opacity: 0;
+  transition: opacity $transition;
+  &.active {
+    opacity: 0.8;
+    z-index: 221;
+  }
+}

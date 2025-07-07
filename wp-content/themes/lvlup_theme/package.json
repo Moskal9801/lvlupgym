@@ -1,0 +1,23 @@
+{
+  "name": "01cat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-autoprefixer": "8.0.0",
+    "gulp-clean-css": "*",
+    "gulp-concat": "*",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "sass": "*",
+    "gulp-csso": "*"
+  },
+  "dependencies": {}
+}

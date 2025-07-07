@@ -1,0 +1,126 @@
+@import "../default/3. variables";
+@import "../default/4. mixins";
+
+.popup-answer {
+  position: relative;
+  margin: 15px auto;
+  padding: 120px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 650px;
+  width: 100%;
+  background-color: $background;
+  @include small-desktop {
+    padding: 105px 0;
+    max-width: 550px;
+  }
+  @include small-laptop {
+    padding: 85px 0;
+    max-width: 460px;
+  }
+  @include tablet {
+    padding: 90px 0;
+    max-width: 345px;
+  }
+  &.sent {
+    .popup-answer__answer {
+      .answer__description {
+        max-width: 490px;
+        @include small-desktop {
+          max-width: 450px;
+        }
+        @include small-laptop {
+          max-width: 395px;
+        }
+        @include tablet {
+          max-width: 275px;
+        }
+      }
+    }
+  }
+  &.buying {
+    .popup-answer__answer {
+      .answer__description {
+        max-width: 490px;
+        @include small-desktop {
+          max-width: 450px;
+        }
+        @include small-laptop {
+          max-width: 395px;
+        }
+        @include tablet {
+          max-width: 275px;
+        }
+      }
+    }
+  }
+  &.failed {
+    .popup-answer__answer {
+      .answer__description {
+        max-width: 425px;
+        @include small-laptop {
+          max-width: 405px;
+        }
+        @include tablet {
+          max-width: 290px;
+        }
+      }
+    }
+  }
+  .popup__close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    @include small-desktop {
+      width: 33px;
+      height: 33px;
+    }
+    @include small-laptop {
+      top: 20px;
+      right: 20px;
+      width: 21px;
+      height: 21px;
+    }
+    @include tablet {
+      width: 24px;
+      height: 24px;
+    }
+    @include hover {
+      path {
+        stroke: $yellow;
+      }
+    }
+    path {
+      stroke: $blue;
+      transition: stroke $transition;
+    }
+  }
+  .f-button.is-close-btn {
+    display: none;
+  }
+  .popup-answer__answer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .answer__title { }
+    .answer__description {
+      margin-top: 30px;
+      width: 100%;
+      text-align: center;
+      color: $dark-gray;
+      @include small-desktop {
+        margin-top: 25px;
+      }
+      @include small-laptop {
+        margin-top: 15px;
+      }
+      @include tablet {
+        margin-top: 20px;
+      }
+    }
+  }
+}
